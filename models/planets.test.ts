@@ -3,6 +3,8 @@ import {
   assertNotEquals,
 } from "https://deno.land/std/testing/asserts.ts";
 
+import { filterHabitablePlanets } from './planets.ts';
+
 Deno.test("Short Example test", () => {
   assertEquals("deno", "deno");
   assertNotEquals({ runtime: "deno" }, { runtime: "node" });
