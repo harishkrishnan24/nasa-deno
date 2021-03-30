@@ -1,5 +1,4 @@
-import { Application, send } from "https://deno.land/x/oak@v6.5.0/mod.ts";
-import * as log from "https://deno.land/std/log/mod.ts";
+import { Application, send, log } from "./deps.ts";
 
 import api from "./api.ts";
 
@@ -8,7 +7,7 @@ const PORT = 8000;
 
 await log.setup({
   handlers: {
-    console: new log.handlers.ConsolerHandler("INFO"),
+    console: new log.handlers.ConsoleHandler("INFO"),
   },
   loggers: {
     default: {
@@ -54,6 +53,7 @@ app.use(async (ctx) => {
     "/javascripts/script.js",
     "/stylesheets/style.css",
     "/images/favicon.png",
+    "/videos/space.mp4",
   ];
   if (fileWhitelist.includes(filePath)) {
     await send(ctx, filePath, { root: `${Deno.cwd()}/public` });
